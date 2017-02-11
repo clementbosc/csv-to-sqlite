@@ -27,6 +27,8 @@ public class Application {
         //Instanciation de SQLiteDB
         SQLiteDB database = new SQLiteDB(databasePath);
 
+        System.out.println("\nTraitement en cours");
+
         //création de la table si elle n'existe pas
         database.createTable(tableName);
 
@@ -53,17 +55,17 @@ public class Application {
 
 
         Scanner sc = new Scanner(System.in);
-        System.out.println("\n\nVeuillez entrer un fichier .sqlite3 dans lequel les données seront insérées " +
+        System.out.println("\nVeuillez entrer un fichier .sqlite3 dans lequel les données seront insérées " +
                 "(si le fichier n'existe pas il sera créé) :");
 
         this.databasePath = sc.nextLine();
 
-        System.out.println("\n\nVeuillez entrer une table dans laquelle les données seront insérées " +
+        System.out.println("\nVeuillez entrer une table dans laquelle les données seront insérées " +
                 "(si la table n'existe pas elle sera créé, sinon les données seront ajoutées à la suite de celles existantes) :");
 
         this.tableName = sc.nextLine();
 
-        System.out.println("\n\nVeuillez entrer un fichier CSV dans lequel les données sont actuellement stockées : ");
+        System.out.println("\nVeuillez entrer un fichier CSV dans lequel les données sont actuellement stockées : ");
 
         this.csvPath = sc.nextLine();
     }
