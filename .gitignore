@@ -1,0 +1,6 @@
+# Created by .ignore support plugin (hsz.mobi)
+/.idea/
+/out/
+/csv-to-sqlite.iml
+/src/META-INF/
+/db/database.sqlite3

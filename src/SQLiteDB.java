@@ -26,6 +26,10 @@ public class SQLiteDB {
     }
 
 
+    /**
+     * Crée une nouvelle base de donnée SQLite à l'emplacement spécifié
+     * @param fileName l'emplacement de la BD
+     */
     public static void createNewDatabase(String fileName) {
 
         String url = "jdbc:sqlite:" + fileName;
@@ -43,7 +47,10 @@ public class SQLiteDB {
     }
 
 
-
+    /**
+     * Fonction de connexion à la base de donnée
+     * @return la Conenxion
+     */
     private Connection connect() {
         // SQLite connection string
         String url = "jdbc:sqlite:"+this.datebasePath;
@@ -79,6 +86,13 @@ public class SQLiteDB {
         }
     }
 
+
+    /**
+     * Insere dans la table tableName le ligne (date, value) passée en param
+     * @param tableName nom de la table
+     * @param date param date de la donnée
+     * @param value param value de la donnée
+     */
     public void insert(String tableName, String date, float value) {
         String sql = "INSERT INTO "+tableName+"(date,value) VALUES(?,?)";
 
@@ -92,6 +106,11 @@ public class SQLiteDB {
         }
     }
 
+
+    /**
+     * Exécute une requête
+     * @param query requête à exécuter
+     */
     public void execQuery(String query){
         try (Connection conn = this.connect();
              PreparedStatement pstmt = conn.prepareStatement(query)) {
