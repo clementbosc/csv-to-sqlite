@@ -7,22 +7,23 @@ import java.sql.*;
  */
 public class SQLiteDB {
 
-    private String datebasePath;
+    //Chemin acces base de donnee sqlite3
+    private String databasePath;
 
 
     /**
      * SQLiteDB constructor
-     * @param datebasePath chemin relatif vers la base de données
+     * @param databasePath chemin relatif vers la base de données
      */
-    public SQLiteDB(String datebasePath) {
-        File f = new File(datebasePath);
+    public SQLiteDB(String databasePath) {
+        File f = new File(databasePath);
 
         //Si le fichier de base de donnée n'est pas trouvé, on en crée un
         if(!f.exists() || f.isDirectory()) {
-            createNewDatabase(datebasePath);
+            createNewDatabase(databasePath);
         }
 
-        this.datebasePath = datebasePath;
+        this.databasePath = databasePath;
     }
 
 
@@ -53,7 +54,7 @@ public class SQLiteDB {
      */
     private Connection connect() {
         // SQLite connection string
-        String url = "jdbc:sqlite:"+this.datebasePath;
+        String url = "jdbc:sqlite:"+this.databasePath;
         Connection conn = null;
         try {
             conn = DriverManager.getConnection(url);
@@ -69,7 +70,7 @@ public class SQLiteDB {
      * @param tableName nom de la table à créer
      */
     public void createTable(String tableName){
-        String url = "jdbc:sqlite:" + this.datebasePath;
+        String url = "jdbc:sqlite:" + this.databasePath;
 
         // Requete SQL pour creation de la table
         String sql = "CREATE TABLE IF NOT EXISTS " + tableName + " (\n"
