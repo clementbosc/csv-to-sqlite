@@ -7,23 +7,23 @@ import java.util.ArrayList;
 public class CSVReader {
 
     private String csvFilePath;
-    private String split;
+    private String separationChar;
 
 
     /**
      * CSVReader constructor
      * @param csvFilePath chemin d'accès vers le fichier CSV à parser
-     * @param split caractère de séparation des donnée (une virgule en général)
+     * @param separationChar caractère de séparation des donnée (une virgule en général)
      */
-    public CSVReader(String csvFilePath, String split) throws FileNotFoundException {
+    public CSVReader(String csvFilePath, String separationChar) throws FileNotFoundException {
         File f = new File(csvFilePath);
 
         if(!f.exists() || f.isDirectory()) {
-            throw new FileNotFoundException("Le fichier file.csv n'a pas été trouvé dans /docs");
+            throw new FileNotFoundException("Le fichier "+csvFilePath+" n'a pas été trouvé");
         }
 
         this.csvFilePath = csvFilePath;
-        this.split = split;
+        this.separationChar = separationChar;
     }
 
 
@@ -47,7 +47,7 @@ public class CSVReader {
             //Pour chaque ligne du fichier on boucle
             while ((line = br.readLine()) != null) {
 
-                String[] results = line.split(this.split);
+                String[] results = line.split(this.separationChar);
                 //On ajoute le couple data/value à l'arrayList
                 array.add("(\""+ results[0] +"\",\""+results[1]+"\")");
             }

@@ -1,4 +1,5 @@
 import java.io.FileNotFoundException;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 /**
@@ -19,7 +20,7 @@ public class Application {
     /**
      * Application constructor
      */
-    public Application() throws FileNotFoundException {
+    public Application() throws FileNotFoundException, SQLException {
 
         //Initialisation du programme
         initialisation();
@@ -73,7 +74,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             new Application();
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | SQLException e) {
             e.printStackTrace();
         }
     }
